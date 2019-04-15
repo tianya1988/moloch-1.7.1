@@ -58,7 +58,10 @@ void moloch_readers_add(char *name, MolochReaderInit func) {
 void moloch_readers_init()
 {
     HASH_INIT(s_, readersHash, moloch_string_hash, moloch_string_cmp);
+    //读取离线的pcap文件
     moloch_readers_add("libpcap-file", reader_libpcapfile_init);
+
+    // 读取网卡上抓到的数据包
     moloch_readers_add("libpcap", reader_libpcap_init);
     moloch_readers_add("tpacketv3", reader_tpacketv3_init);
     moloch_readers_add("null", reader_null_init);

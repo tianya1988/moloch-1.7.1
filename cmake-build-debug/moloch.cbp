@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="moloch"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/jason/project/soc/moloch/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/jason/project/soc/moloch/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="moloch">
+				<Option output="/home/jason/project/soc/moloch/cmake-build-debug/moloch" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jason/project/soc/moloch/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jason/Downloads/thirdpatry/libpcap-1.9.0"/>
+					<Add directory="/home/jason/Downloads/thirdpatry/curl-7.61.1"/>
+					<Add directory="/home/jason/project/soc/moloch/capture"/>
+					<Add directory="/home/jason/project/soc/moloch/capture/parsers"/>
+					<Add directory="/home/jason/project/soc/moloch/capture/plugins/lua"/>
+					<Add directory="/home/jason/project/soc/moloch/capture/thirdparty"/>
+					<Add directory="/usr/local/include/glib-2.0"/>
+					<Add directory="/usr/local/lib/glib-2.0/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 moloch"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="moloch/fast">
+				<Option output="/home/jason/project/soc/moloch/cmake-build-debug/moloch" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/jason/project/soc/moloch/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/jason/Downloads/thirdpatry/libpcap-1.9.0"/>
+					<Add directory="/home/jason/Downloads/thirdpatry/curl-7.61.1"/>
+					<Add directory="/home/jason/project/soc/moloch/capture"/>
+					<Add directory="/home/jason/project/soc/moloch/capture/parsers"/>
+					<Add directory="/home/jason/project/soc/moloch/capture/plugins/lua"/>
+					<Add directory="/home/jason/project/soc/moloch/capture/thirdparty"/>
+					<Add directory="/usr/local/include/glib-2.0"/>
+					<Add directory="/usr/local/lib/glib-2.0/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 moloch/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/jason/project/soc/moloch/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/jason/project/soc/moloch/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/jason/project/soc/moloch/capture/bsb.h">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/config.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/db.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/dll.h">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/drophash.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/field.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/hash.h">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/http.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/main.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/moloch.h">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/packet.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/dhcp.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/dns.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/http.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/irc.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/krb5.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/ldap.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/misc.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/mysql.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/oracle.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/postgresql.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/quic.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/radius.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/smb.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/smtp.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/socks.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/ssh.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/tds.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/tls-cipher.h">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/parsers/tls.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/daq/reader-daq.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/lua/data.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/lua/httpService.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/lua/molua.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/lua/molua.h">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/lua/session.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/netflow.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/pfring/reader-pfring.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/scrubspi.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/snf/reader-snf.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/suricata.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/tagger.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/wise.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/plugins/writer-s3.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/reader-libpcap-file.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/reader-libpcap.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/reader-null.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/reader-tpacketv3.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/readers.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/rules.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/session.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/thirdparty/http_parser.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/thirdparty/http_parser.h">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/thirdparty/js0n.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/thirdparty/patricia.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/thirdparty/patricia.h">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/trie.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/writer-disk.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/writer-inplace.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/writer-null.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/writer-simple.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/writers.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/capture/yara.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/contrib/decodeDrops.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/tests/plugins/test.c">
+			<Option target="moloch"/>
+		</Unit>
+		<Unit filename="/home/jason/project/soc/moloch/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

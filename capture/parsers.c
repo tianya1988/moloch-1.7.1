@@ -657,6 +657,7 @@ void moloch_parsers_init()
 
             MolochPluginInitFunc parser_init;
 
+            //初始化解析模块
             if (!g_module_symbol(parser, "moloch_parser_init", (gpointer *)(char*)&parser_init) || parser_init == NULL) {
                 LOG("ERROR - Module %s doesn't have a moloch_parser_init", filenames[i]);
                 g_free(filenames[i]);

@@ -46,6 +46,12 @@ int reader_libpcap_stats(MolochReaderStats_t *stats)
     return 0;
 }
 /******************************************************************************/
+/**
+ * 参数意义
+ * batch 是pcap_dispatch()的最后一个参数，当收到足够数量的包后pcap_dispatch会调用callback回调函数，同时将pcap_dispatch()的最后一个参数传递给它
+ * h  是收到数据包的对应的pcap_pkthdr类型的指针
+ * bytes  收到的数据包数据
+ * */
 void reader_libpcap_pcap_cb(u_char *batch, const struct pcap_pkthdr *h, const u_char *bytes)
 {
     if (unlikely(h->caplen != h->len)) {
@@ -54,9 +60,11 @@ void reader_libpcap_pcap_cb(u_char *batch, const struct pcap_pkthdr *h, const u_
             h->caplen, h->len);
     }
 
+
+    // 接下来的几行是声明了一个结构体MolochPacket_t  并对其分配内存，和初始化其属性值
     MolochPacket_t *packet = MOLOCH_TYPE_ALLOC0(MolochPacket_t);
 
-    packet->pkt           = (u_char *)bytes;
+    packet->pkt           = (u_char *)bytes;//bytes本就是指针，(u_char *)是将此指针的地址取出，然后变为u_char类型，最后赋值给pkt指针
     packet->ts            = h->ts;
     packet->pktlen        = h->len;
     packet->readerPos     = ((MolochPacketBatch_t *)batch)->readerPos;
@@ -75,7 +83,11 @@ LOCAL void *reader_libpcap_thread(gpointer posv)
     moloch_packet_batch_init(&batch);
     batch.readerPos = pos;
     while (1) {
+        // 功能：循环捕获网络数据包，直到遇到错误或者满足退出条件，每次捕获一个数据包就会调用callback指定的回调函数，所以，可以在回调函数中进行数据包的处理操作。
+        // 这个函数和pcap_loop()非常类似，只是在超过to_ms毫秒后就会返回（to_ms是pcap_open_live()的第四个参数）
         int r = pcap_dispatch(pcap, 10000, reader_libpcap_pcap_cb, (u_char*)&batch);
+
+
         moloch_packet_batch_flush(&batch);
 
         // Some kind of failure we quit
@@ -113,6 +125,8 @@ void reader_libpcap_start() {
 
         char name[100];
         snprintf(name, sizeof(name), "moloch-pcap%d", i);
+
+        //每块网卡对应一个读取数据的线程
         g_thread_new(name, &reader_libpcap_thread, (gpointer)(long)i);
     }
 }
@@ -183,6 +197,8 @@ void reader_libpcap_init(char *UNUSED(name))
 #ifdef SNF
         pcaps[i] = pcap_open_live(config.interface[i], config.snapLen, 1, 1000, errbuf);
 #else
+        // 功能：打开所有用于捕获数据的网络端口，一个网卡对应一个元素
+        // 返回pcap_t类型指针，后面的所有操作都要使用这个指针
         pcaps[i] = reader_libpcap_open_live(config.interface[i], config.snapLen, 1, 1000, errbuf);
 #endif
 

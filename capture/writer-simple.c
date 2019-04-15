@@ -84,7 +84,9 @@ LOCAL MolochSimple_t *writer_simple_alloc(int thread, MolochSimple_t *previous)
     MolochSimple_t *info;
 
     MOLOCH_LOCK(freeList[thread].lock);
+    // 从freeList中pop出一个元素赋值给info，freeList是一个空闲的数组，其元素类型是MolochSimpleHead_t结构体
     DLL_POP_HEAD(simple_, &freeList[thread], info);
+
     MOLOCH_UNLOCK(freeList[thread].lock);
 
     if (!info) {
@@ -158,7 +160,9 @@ LOCAL void writer_simple_process_buf(int thread, int closing)
         currentInfo[thread] = writer_simple_alloc(thread, info);
 
         // Copy what we aren't going to write to next buffer
+        // 从此处可以看出 写的数据大小都是pageSize 分页大小的整数倍
         memcpy(currentInfo[thread]->buf, info->buf + writeSize, info->bufpos - writeSize);
+
         currentInfo[thread]->bufpos = info->bufpos - writeSize;
 
         // Set what we are going to write
@@ -168,7 +172,10 @@ LOCAL void writer_simple_process_buf(int thread, int closing)
     }
     MOLOCH_LOCK(simpleQ);
     gettimeofday(&lastSave[thread], NULL);
+
+    //将需要写入的数据info，放到了simpleQ队列的尾部
     DLL_PUSH_TAIL(simple_, &simpleQ, info);
+
     if ((DLL_COUNT(simple_, &simpleQ) % 100) == 0) {
         LOG("WARNING - Disk Q of %d is too large, check the Moloch FAQ about testing disk speed", DLL_COUNT(simple_, &simpleQ));
     }
@@ -345,11 +352,14 @@ LOCAL void writer_simple_write(const MolochSession_t * const session, MolochPack
 
     memcpy(currentInfo[thread]->buf+currentInfo[thread]->bufpos, &hdr, 16);
     currentInfo[thread]->bufpos += 16;
+
+    // 此处代码是将packet数据包中的数据copy到buf中，只不过copy到的目的地址需要调整一下，因为之前buf中已经存在数据了
     memcpy(currentInfo[thread]->buf+currentInfo[thread]->bufpos, packet->pkt, packet->pktlen);
     currentInfo[thread]->bufpos += packet->pktlen;
     currentInfo[thread]->file->pos += 16 + packet->pktlen;
 
     if (currentInfo[thread]->bufpos > config.pcapWriteSize) {
+        // 将需要写入的数据info，放到了simpleQ队列的尾部
         writer_simple_process_buf(thread, 0);
     } else if (currentInfo[thread]->file->pos >= config.maxFileSizeB) {
         writer_simple_process_buf(thread, 1);
@@ -368,7 +378,10 @@ LOCAL void *writer_simple_thread(void *UNUSED(arg))
         while (DLL_COUNT(simple_, &simpleQ) == 0) {
             MOLOCH_COND_WAIT(simpleQ);
         }
+
+        // 从simple队列中取出head元素，复制给info
         DLL_POP_HEAD(simple_, &simpleQ, info);
+
         MOLOCH_UNLOCK(simpleQ);
 
         uint32_t pos = 0;
@@ -478,6 +491,8 @@ void writer_simple_init(char *name)
 {
     moloch_writer_queue_length = writer_simple_queue_length;
     moloch_writer_exit         = writer_simple_exit;
+
+    // TODO 疑问
     moloch_writer_write        = writer_simple_write;
 
     char *mode = moloch_config_str(NULL, "simpleEncoding", NULL);

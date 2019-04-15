@@ -269,6 +269,8 @@ LOCAL void moloch_session_save(MolochSession_t *session)
 
     moloch_packet_tcp_free(session);
 
+
+    // TODO  parserSaveFunc此方法的实现是干嘛呢,dns中并没有注册parserSaveFunc()
     if (session->parserInfo) {
         int i;
         for (i = 0; i < session->parserNum; i++) {
@@ -488,6 +490,7 @@ void moloch_session_process_commands(int thread)
         MolochSession_t *session = DLL_PEEK_HEAD(q_, &closingQ[thread]);
 
         if (session && session->saveTime < (uint64_t)lastPacketSecs[thread]) {
+            // 将 数据/session/SPI Data  保存入es
             moloch_session_save(session);
         } else {
             break;

@@ -478,6 +478,8 @@ void moloch_db_save_session(MolochSession_t *session, int final)
     /* If no room left to add, send the buffer */
     if (dbInfo[thread].json && (uint32_t)BSB_REMAINING(dbInfo[thread].bsb) < jsonSize) {
         if (BSB_LENGTH(dbInfo[thread].bsb) > 0) {
+
+            // 批量保存数据到es
             sendBulkFunc(dbInfo[thread].json, BSB_LENGTH(dbInfo[thread].bsb));
         } else {
             moloch_http_free_buffer(dbInfo[thread].json);

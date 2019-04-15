@@ -166,6 +166,7 @@ void moloch_packet_process_data(MolochSession_t *session, const uint8_t *data, i
     int consumed = 0;
 
     for (i = 0; i < session->parserNum; i++) {
+        //此处的parserFunc()应该是由http.c
         if (session->parserInfo[i].parserFunc) {
             consumed = session->parserInfo[i].parserFunc(session, session->parserInfo[i].uw, data, len, which);
             if (consumed) {
@@ -212,6 +213,7 @@ LOCAL void moloch_packet_tcp_finish(MolochSession_t *session)
                 moloch_parsers_classify_tcp(session, data, len, which);
             }
 
+            //此处应该是解析dns http等应用协议的地方
             moloch_packet_process_data(session, data, len, which);
             session->tcpSeq[which] += len;
             session->databytes[which] += len;
@@ -766,6 +768,7 @@ LOCAL void moloch_packet_process(MolochPacket_t *packet, int thread)
         break;
     case SESSION_TCP:
         freePacket = moloch_packet_process_tcp(session, packet);
+        //此处应该调用到了解析dns http等应用协议的代码
         moloch_packet_tcp_finish(session);
         break;
     }
@@ -804,6 +807,8 @@ LOCAL void *moloch_packet_thread(void *threadp)
             }
         }
         inProgress[thread] = 1;
+
+        //从packetQ队列中pop出第一个元素，赋值给packet指针
         DLL_POP_HEAD(packet_, &packetQ[thread], packet);
         MOLOCH_UNLOCK(packetQ[thread].lock);
 
@@ -815,6 +820,7 @@ LOCAL void *moloch_packet_thread(void *threadp)
         } else {
             skipCount++;
         }
+        // 创建或者获取session，并将packet中的信息添加到session中的对应字段中。
         moloch_packet_process(packet, thread);
     }
 
@@ -1394,6 +1400,7 @@ LOCAL int moloch_packet_ip4(MolochPacketBatch_t *batch, MolochPacket_t * const p
     }
     packet->protocol = ip4->ip_p;
 
+    // moloch_packet_ip逻辑包括将packet放到batch中
     return moloch_packet_ip(batch, packet, sessionId);
 }
 /******************************************************************************/
