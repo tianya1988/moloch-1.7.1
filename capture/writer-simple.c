@@ -359,7 +359,7 @@ LOCAL void writer_simple_write(const MolochSession_t * const session, MolochPack
     currentInfo[thread]->file->pos += 16 + packet->pktlen;
 
     if (currentInfo[thread]->bufpos > config.pcapWriteSize) {
-        // 将需要写入的数据info，放到了simpleQ队列的尾部
+        // 将需要写入的数据info，放到了simpleQ队列的尾部.当buf满了就执行处理buf
         writer_simple_process_buf(thread, 0);
     } else if (currentInfo[thread]->file->pos >= config.maxFileSizeB) {
         writer_simple_process_buf(thread, 1);
@@ -492,7 +492,7 @@ void writer_simple_init(char *name)
     moloch_writer_queue_length = writer_simple_queue_length;
     moloch_writer_exit         = writer_simple_exit;
 
-    // TODO 疑问
+    // 调用此方法的调用者是packet.c的moloch_packet_process()中的moloch_writer_write(session, packet);
     moloch_writer_write        = writer_simple_write;
 
     char *mode = moloch_config_str(NULL, "simpleEncoding", NULL);

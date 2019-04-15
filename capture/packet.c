@@ -687,6 +687,8 @@ LOCAL void moloch_packet_process(MolochPacket_t *packet, int thread)
 
     if (packets <= session->stopSaving) {
         MOLOCH_THREAD_INCR_NUM(writtenBytes, packet->pktlen);
+
+        // 注意：此处与writer_simple.writer_simple_init()方法中的moloch_writer_write        = writer_simple_write;相关联
         moloch_writer_write(session, packet);
 
         int16_t len;
@@ -1400,7 +1402,7 @@ LOCAL int moloch_packet_ip4(MolochPacketBatch_t *batch, MolochPacket_t * const p
     }
     packet->protocol = ip4->ip_p;
 
-    // moloch_packet_ip逻辑包括将packet放到batch中
+    // 丰富化packet信息，并将packet放到batch中。
     return moloch_packet_ip(batch, packet, sessionId);
 }
 /******************************************************************************/
